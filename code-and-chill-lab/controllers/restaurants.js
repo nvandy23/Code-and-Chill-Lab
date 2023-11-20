@@ -4,7 +4,8 @@ module.exports = {
   new: newRestaurant,
   create,
   index,
-  show
+  show,
+  delete: deleteRestaurant
 };
 
 function newRestaurant(req, res) {
@@ -47,4 +48,14 @@ async function show(req, res) {
     } catch(err) {
         console.log('show error', err)
     }
+}
+
+async function deleteRestaurant(req,res) {
+  try {
+   await Restaurant.deleteOne()
+   res.redirect('/restaurants')
+  }
+  catch(err){
+    console.log('err')
+  }
 }
