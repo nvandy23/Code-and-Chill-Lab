@@ -1,3 +1,4 @@
+const restaurant = require("../models/restaurant");
 const Restaurant = require("../models/restaurant");
 
 module.exports = {
@@ -6,7 +7,8 @@ module.exports = {
   index,
   show,
   delete: deleteRestaurant,
-  edit
+  edit,
+  update
 };
 
 function newRestaurant(req, res) {
@@ -70,4 +72,13 @@ res.render('restaurants/edit',{title: "Edit restaurant", restaurant})
 catch(err){
   console.log('err')
 }
+}
+async function update(req,res) {
+  try {
+await Restaurant.findByIdAndUpdate(req.params.id,req.body,{new:true})
+ res.redirect('/restaurants')
+  }
+  catch(err){
+console.log(err)
+  }
 }

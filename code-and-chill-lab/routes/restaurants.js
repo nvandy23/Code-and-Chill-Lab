@@ -18,5 +18,7 @@ router.get('/:id/edit', restaurantsCtrl.edit)
 //
 router.delete('/:id',restaurantsCtrl.delete)
 
+router.put('/:id',restaurantsCtrl.update)
+
 
 module.exports = router;

@@ -1,9 +1,9 @@
 <%- include('../partials/header') %>
-<form method="POST" action="/restaurants">
+<form method="POST" action="/restaurants/<%=restaurant._id%>?_method=PUT"></form>
     
     <div>
         <label>Edit restaurant name</label>
-        <input type ='text'  name="name" required>
+        <input type ='text' name="name" required>
     </div>
     
     <div>
