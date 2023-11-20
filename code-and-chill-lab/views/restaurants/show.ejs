@@ -10,7 +10,7 @@
     <%= restaurant.yearOpened %>
     <br>
     <br>
-    <form action="" method="POST">
+    <form action="/restaurants/<%=restaurant._id%>?_method=DELETE" method="POST">
         <button type='submit'>Delete</button>
     </form>
     
