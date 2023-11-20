@@ -12,7 +12,8 @@
     <br>
     <form action="/restaurants/<%=restaurant._id%>?_method=DELETE" method="POST">
         <button type='submit'>Delete</button>
+        <br>
     </form>
-    
+    <a href='/restaurants/<%=restaurant._id%>/edit'> Edit</a>
 </section>
 <%- include('../partials/footer') %>

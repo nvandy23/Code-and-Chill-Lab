@@ -5,7 +5,8 @@ module.exports = {
   create,
   index,
   show,
-  delete: deleteRestaurant
+  delete: deleteRestaurant,
+  edit
 };
 
 function newRestaurant(req, res) {
@@ -58,4 +59,15 @@ async function deleteRestaurant(req,res) {
   catch(err){
     console.log('err')
   }
+}
+
+async function edit (req,res) {
+try{
+const restaurant = await Restaurant.find()
+res.render('restaurants/edit',{title: "Edit restaurant", restaurant})
+
+}
+catch(err){
+  console.log('err')
+}
 }
