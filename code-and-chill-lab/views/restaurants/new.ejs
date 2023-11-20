@@ -1,9 +1,28 @@
 <%- include('../partials/header') %>
 <section>
-    <form>
-        
-
-
-
-
+    <form action="/restaurants" method="POST">
+        <label>Name:</label>
+        <input type="text" name="name" required><br><br>
+        <label>Cuisine:</label>
+        <select name="cuisine">
+            <option value="American">American</option>
+            <option value="Greek">Greek</option>
+            <option value="Italian">Italian</option>
+            <option value="Japanese">Japanese</option>
+            <option value="Mexican">Mexican</option>
+            <option value="Thai">Thai</option>
+        </select><br><br>
+        <label>Price:</label>
+        <select name="price">
+            <option value="$">$</option>
+            <option value="$$">$$</option>
+            <option value="$$$">$$$</option>
+            <option value="$$$$">$$$$</option>
+            <option value="$$$$$">$$$$$</option>
+        </select><br><br>
+        <label>Year Opened</label>
+        <input type="number" name="yearOpened"><br><br>
+    <button type="submit">Add Restaurant</button>
+    </form>
+<p><%= errorMsg %></p>
 <%- include('../partials/footer') %>

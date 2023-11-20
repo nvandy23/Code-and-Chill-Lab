@@ -2,10 +2,16 @@ const express = require('express');
 const router = express.Router();
 const restaurantsCtrl = require('../controllers/restaurants')
 
-// router.get('/', restaurantsCtrl.index)
+// GET /restaurants
+router.get('/', restaurantsCtrl.index)
 
+// GET /restaurants/new
 router.get('/new', restaurantsCtrl.new)
 
-// router.post('/', restaurantsCtrl.create)
+// POST /restaurants
+router.post('/', restaurantsCtrl.create)
+
+// GET /restaurants/:id
+router.get('/:id', restaurantsCtrl.show)
 
 module.exports = router;
