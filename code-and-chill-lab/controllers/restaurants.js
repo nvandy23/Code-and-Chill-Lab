@@ -8,7 +8,7 @@ module.exports = {
   show,
   delete: deleteRestaurant,
   edit,
-  update
+  update,
 };
 
 function newRestaurant(req, res) {
@@ -40,45 +40,45 @@ async function index(req, res) {
 }
 
 async function show(req, res) {
-    try {
-        // console.log(req.params.id)
-        // res.send('testing show page')
-        const restaurant = await Restaurant.findById(req.params.id)
-        res.render('restaurants/show', {
-            title: 'Restaurant Details',
-            restaurant
-        })
-    } catch(err) {
-        console.log('show error', err)
-    }
-}
-
-async function deleteRestaurant(req,res) {
   try {
-   await Restaurant.deleteOne()
-   res.redirect('/restaurants')
-  }
-  catch(err){
-    console.log('err')
+    // console.log(req.params.id)
+    // res.send('testing show page')
+    const restaurant = await Restaurant.findById(req.params.id);
+    res.render("restaurants/show", {
+      title: "Restaurant Details",
+      restaurant,
+    });
+  } catch (err) {
+    console.log("show error", err);
   }
 }
 
-async function edit (req,res) {
-try{
-const restaurant = await Restaurant.find()
-res.render('restaurants/edit',{title: "Edit restaurant", restaurant})
-
-}
-catch(err){
-  console.log('err')
-}
-}
-async function update(req,res) {
+async function deleteRestaurant(req, res) {
   try {
-await Restaurant.findByIdAndUpdate(req.params.id,req.body,{new:true})
- res.redirect('/restaurants')
+    await Restaurant.deleteOne();
+    res.redirect("/restaurants");
+  } catch (err) {
+    console.log(err);
   }
-  catch(err){
-console.log(err)
+}
+
+async function edit(req, res) {
+  try {
+    const restaurant = await Restaurant.find();
+    res.render("restaurants/edit", { title: "Edit restaurant",errorMsg: "", restaurant });
+    Restaurant.save()
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function update(req, res) {
+  try {
+    res.send("It worked");
+    const restaurant = await Restaurant.updateOne(req.body)
+    console.log(restaurant)
+    res.redirect('/restaurants')
+  } catch (err) {
+    console.log(err);
   }
 }
