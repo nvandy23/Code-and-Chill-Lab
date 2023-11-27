@@ -1,0 +1,39 @@
+<%- include('../partials/header') %>
+<form action="/restaurants/<%=restaurant._id%>?_method=PUT" method="POST"></form>
+    
+    <div>
+        <label>Edit restaurant name</label>
+        <input type='text' name="name" required>
+    </div>
+    
+    <div>
+        <label>Edit restaurant cuisine</label>
+        <select name="cuisine">
+            <option value="American">American</option>
+            <option value="Greek">Greek</option>
+            <option value="Italian">Italian</option>
+            <option value="Japanese">Japanese</option>
+            <option value="Mexican">Mexican</option>
+            <option value="Thai">Thai</option>
+        </select>
+    </div>
+    
+    <div>
+        <label>Edit restaurant price</label>
+        <select name="price">
+            <option value="$">$</option>
+            <option value="$$">$$</option>
+            <option value="$$$">$$$</option>
+            <option value="$$$$">$$$$</option>
+            <option value="$$$$$">$$$$$</option>
+        </select>
+    </div>
+    <div>
+        <label>Year Opened</label>
+        <input type="number" name="yearOpened">
+    </div>
+    
+    <button type="submit">Edit restaurant</button>
+</form>
+<p><%= errorMsg %></p>
+<%- include('../partials/footer') %>

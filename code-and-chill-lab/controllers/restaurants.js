@@ -1,10 +1,14 @@
+const restaurant = require("../models/restaurant");
 const Restaurant = require("../models/restaurant");
 
 module.exports = {
   new: newRestaurant,
   create,
   index,
-  show
+  show,
+  delete: deleteRestaurant,
+  edit,
+  update,
 };
 
 function newRestaurant(req, res) {
@@ -36,15 +40,45 @@ async function index(req, res) {
 }
 
 async function show(req, res) {
-    try {
-        // console.log(req.params.id)
-        // res.send('testing show page')
-        const restaurant = await Restaurant.findById(req.params.id)
-        res.render('restaurants/show', {
-            title: 'Restaurant Details',
-            restaurant
-        })
-    } catch(err) {
-        console.log('show error', err)
-    }
+  try {
+    // console.log(req.params.id)
+    // res.send('testing show page')
+    const restaurant = await Restaurant.findById(req.params.id);
+    res.render("restaurants/show", {
+      title: "Restaurant Details",
+      restaurant,
+    });
+  } catch (err) {
+    console.log("show error", err);
+  }
+}
+
+async function deleteRestaurant(req, res) {
+  try {
+    await Restaurant.deleteOne();
+    res.redirect("/restaurants");
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function edit(req, res) {
+  try {
+    const restaurant = await Restaurant.find();
+    res.render("restaurants/edit", { title: "Edit restaurant",errorMsg: "", restaurant });
+    Restaurant.save()
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+async function update(req, res) {
+  try {
+    res.send("It worked");
+    const restaurant = await Restaurant.updateOne(req.body)
+    console.log(restaurant)
+    res.redirect('/restaurants')
+  } catch (err) {
+    console.log(err);
+  }
 }
